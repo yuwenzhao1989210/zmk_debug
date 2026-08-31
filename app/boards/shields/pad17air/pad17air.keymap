@@ -1,0 +1,69 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/rgb.h>
+
+#define DEFAULT   0
+#define FUNC  1
+
+&lt {
+    tapping-term-ms = <200>;
+    flavor = "balanced";
+    quick-tap-ms = <170>;
+};
+
+/ {
+ 
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer { // Layer 0 (DEFAULT Layer）
+            display-name = "Default";
+            label = "DEFAULTLAYER";
+// ┌───┬───┬───┬───┐
+// │NUM│ / │ * │ - │
+// ├───┼───┼───┼───┤
+// │ 7 │ 8 │ 9 │ + │
+// ├───┼───┼───┤   │
+// │ 4 │ 5 │ 6 │   │
+// ├───┼───┼───┼───┤
+// │ 1 │ 2 │ 3 │RET│
+// ├───┴───┼───┤   │
+// │ 0     │ . │   │
+// └───────┴───┴───┘       
+            bindings = <
+&lt FUNC KP_NUM  &kp KP_SLASH    &kp KP_ASTERISK   &kp KP_MINUS  
+&kp KP_N7        &kp KP_N8       &kp KP_N9         &kp KP_PLUS  
+&kp KP_N4        &kp KP_N5       &kp KP_N6         
+&kp KP_N1        &kp KP_N2       &kp KP_N3         &kp KP_ENTER
+&kp KP_N0                        &kp KP_DOT
+>;
+        };
+
+        function_layer {  // Layer 1 (FUNC Layer)
+            display-name = "Function";
+            label = "FUNCTIONLAYER";
+// ┌────────┬────────┬────────┬─────────┐
+// │        │        │        │ RGB_TOG │
+// ├────────┼────────┼────────┼─────────┤
+// │BT_CLR_A│ RGB_SPD│        │
+// ├────────┼────────┼────────┤ BT_CLR  │
+// │  BL1   │  BL2   │  BL3   │         │
+// ├────────┼────────┼────────┼─────────┤
+// │ RGB_EFR│ RGB_EFF│        │         │
+// ├────────┴────────┼────────┤         │
+// │      RGB_HUD    │ RGB_HUI│         │   
+// └─────────────────┴────────┴─────────┘      
+            bindings = <
+&trans           &trans          &trans            &rgb_ug RGB_TOG  
+&bt BT_CLR_ALL   &rgb_ug RGB_SPI &rgb_ug RGB_SPD   &bt BT_CLR  
+&bt BT_SEL 1     &bt BT_SEL 2    &bt BT_SEL 3              
+&rgb_ug RGB_EFR  &rgb_ug RGB_EFF &trans            &trans
+&rgb_ug RGB_HUD                  &rgb_ug RGB_HUI 
+            >; 
+        };                      
+
+    };
+};

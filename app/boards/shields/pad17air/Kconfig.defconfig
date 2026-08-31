@@ -1,0 +1,12 @@
+if SHIELD_PAD17AIR
+
+config ZMK_KEYBOARD_NAME
+	default "Pad17Air"
+
+endif
+
+
+
+
+
+

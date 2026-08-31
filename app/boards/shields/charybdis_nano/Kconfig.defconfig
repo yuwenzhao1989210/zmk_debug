@@ -1,0 +1,20 @@
+if SHIELD_CHARYBDIS_NANO_RIGHT
+
+config ZMK_KEYBOARD_NAME
+	default "64key-usb"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+	default y
+
+endif
+
+if SHIELD_CHARYBDIS_NANO_LEFT || SHIELD_CHARYBDIS_NANO_RIGHT
+
+config ZMK_SPLIT
+	default y
+	
+endif
+
+
+
+

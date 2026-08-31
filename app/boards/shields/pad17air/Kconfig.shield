@@ -1,0 +1,3 @@
+config SHIELD_PAD17AIR
+    def_bool $(shields_list_contains,p17air)
+

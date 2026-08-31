@@ -1,0 +1,9 @@
+file_format: "1"
+id: pad17air
+name: pad17air
+type: shield
+url: https://github.com/pad17air
+# requires: [pro_micro]
+features:
+  - keys
+  - underglow
