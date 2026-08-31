@@ -44,18 +44,15 @@ uint8_t read_ram_mode(void) {
 }
 
 static void led_gpio_on(void) {
-    int p = read_ram_mode();
-    if (p == 1) { // 1是蓝牙1
-        gpio_pin_set_dt(&led_gpio1, 1);
-    } else if (p == 2) {
-        LOG_INF("p==2, eset led1 ....");
-        gpio_pin_set_dt(&led_gpio1, 1);
-    } else if (p == 3) {
-        LOG_INF("p==3, eset led2 ....");
-        gpio_pin_set_dt(&led_gpio2, 1);
-    } else {
-        LOG_INF("p==%d ....", p);
-    }
+    // int p = read_ram_mode();
+    // if (p == 1) { // 1是蓝牙1
+    //     gpio_pin_set_dt(&led_gpio1, 1);
+    // } else if (p == 2) {
+    //     LOG_INF("p==2, eset led1 ....");
+    //     gpio_pin_set_dt(&led_gpio1, 1);
+    // } else if (p == 3) {
+    //     LOG_INF("p==3, eset led2 ....");
+    gpio_pin_set_dt(&led_gpio1, 1);
 }
 static void led_gpio_off(void) {
     int p = read_ram_mode();
