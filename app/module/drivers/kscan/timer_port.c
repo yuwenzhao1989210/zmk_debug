@@ -18,11 +18,11 @@ static bool led_on = false;
 static uint32_t blink_interval_ms = 500;
 
 uint8_t read_ram_mode(void) {
-    enum zmk_transport t = zmk_endpoint_get_preferred_transport();
+    // enum zmk_transport t = zmk_endpoint_get_preferred_transport();
 
-    if (t == ZMK_TRANSPORT_USB) {
-        return 0; // 0 is usb
-    }
+    // if (t == ZMK_TRANSPORT_USB) {
+    //     return 0; // 0 is usb
+    // }
 
 #if IS_ENABLED(CONFIG_ZMK_BLE)
     int p = zmk_ble_active_profile_index();
@@ -43,19 +43,9 @@ uint8_t read_ram_mode(void) {
     return 0;
 }
 
-static void led_gpio_on(void) {
-    // int p = read_ram_mode();
-    // if (p == 1) { // 1是蓝牙1
-    //     gpio_pin_set_dt(&led_gpio1, 1);
-    // } else if (p == 2) {
-    //     LOG_INF("p==2, eset led1 ....");
-    //     gpio_pin_set_dt(&led_gpio1, 1);
-    // } else if (p == 3) {
-    //     LOG_INF("p==3, eset led2 ....");
-    gpio_pin_set_dt(&led_gpio1, 1);
-}
+static void led_gpio_on(void) { gpio_pin_set_dt(&led_gpio1, 1); }
 static void led_gpio_off(void) {
-    int p = read_ram_mode();
+    // int p = read_ram_mode();
 
     // gpio_pin_set_dt(&led_gpio, 0); //led0 has been configured as
     // NUMLOCK INDICATOR in pad17air.overlay
@@ -101,8 +91,8 @@ static void led_timer_handler(struct k_timer *timer) {
     }
 
     if (++blink_cnt >= blink_max) {
-        LOG_INF("more than %d will stop adving.... currest adv status = %d", blink_max,
-                get_adv_status());
+        // LOG_INF("more than %d will stop adving.... currest adv status = %d", blink_max,
+        //         get_adv_status());
         // zmk_ble_adv_stop();
         led_set_off();
         blink_cnt = 0;
