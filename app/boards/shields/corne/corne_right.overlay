@@ -6,9 +6,9 @@
 
 #include "corne.dtsi"
 
-// &default_transform {
-//     col-offset = <6>;
-// };
+&default_transform {
+    col-offset = <7>;
+};
 
 // &five_column_transform {
 //     col-offset = <6>;
