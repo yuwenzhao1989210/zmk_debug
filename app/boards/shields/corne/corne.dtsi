@@ -6,7 +6,7 @@
 
 #include <dt-bindings/zmk/matrix_transform.h>
 
-#include <layouts/foostan/corne/7column.dtsi>
+#include "7column.dtsi"
 
 &foostan_corne_7col_layout {
     transform = <&default_transform>;
